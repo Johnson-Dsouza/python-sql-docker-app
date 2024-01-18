@@ -1,0 +1,13 @@
+version: '3.8'  # Version of Docker Compose to use.
+
+services:
+  python-sql-app:  # Name of the service.
+    build:
+      context: .  # The context for building the Docker image is the current directory (where the docker-compose.yml file is).
+      dockerfile: Dockerfile  # Specifies the Dockerfile to use for building the image.
+    image: ${IMAGE_REPO_NAME}:${COMMIT_ID}
+    environment:
+      # environment variables defined inside a .env file
+      - MSSQL_TCP_PORT=${MSSQL_TCP_PORT}
+
+# Define additional services or configurations under the 'services' section if needed.
